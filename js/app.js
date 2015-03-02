@@ -1,9 +1,13 @@
 var gameBoardHeight = 606;
 var gameBoardWidth = 505;
+var spriteWidth = gameBoardWidth / 5;
+var spriteHeight;
 var diedCounterHolder = document.getElementById('died');
 var scoreHolder = document.getElementById('score');
 var messageWon = document.getElementById('message-won');
+messageWon.innerHTML = "YOU WON!";
 var messageLost = document.getElementById('message-lost');
+messageLost.innerHTML = "GAME OVER";
 var winningFlag = false;
 
 
@@ -22,7 +26,9 @@ function setHTMLscores() {
 }
 
 function playerStartPos() {
-	player.x = 202;
+	// TODO: is there a way to not use static numbers here?
+	// This 'initializes' the player starting position on the board
+	player.x = (gameBoardWidth / 2) - (spriteWidth / 2);
 	player.y = 386;
 }
 
@@ -100,6 +106,8 @@ var Player = function(x, y) {
 }
 
 Player.prototype.update = function() {
+	// TODO:
+	// I think the game still functions fine without these lines below
 	this.x = this.x;
 	this.y = this.y;
 }
@@ -110,8 +118,10 @@ Player.prototype.render = function() {
 }
 
 Player.prototype.handleInput = function(keyed) {
-	// Checks key code and moves the Player using update() accordingly
-	// Used an object to store the 'actions' instead of using an else/if or switch
+	/* Checks key code and moves the Player according to keypress event
+	*  I Used an object to store the 'actions' instead of using an else/if or switch statement,
+	*  and the functions also handle if the player moves off screen
+	*/
 	var moveIt = {
 		up: function() {
 			player.y = player.y - 83;
@@ -145,25 +155,10 @@ Player.prototype.handleInput = function(keyed) {
 	if (moveIt.hasOwnProperty(keyed)) {
 		moveIt[keyed]();
 	}
-
-	// TODO: Someway to clean this up...Switch Statement?
-	// Keeps the player on the screen, doesn't allow it to move off screen
-
-	// if (player.y > 386) {
-	// 	player.y = 386;
-	// } else if (player.y === -29) {
-	// 	winningFlag = true; // The player reached the top of the screen
-	// 	player.y = -9;
-	// }	else if (player.y < -29) {
-	// 	player.y = -9;
-	// } else if (player.x < 0) {
-	// 	player.x = 0;
-	// } else if (player.x > 404) {
-	// 	player.x = 404;
-	// }
 }
 
-// Creating a Gem SuperClass
+// Creating a Gem class
+// TODO: Need to add a gem update function to engine.js
 var Gem = function(x, y) {
 	this.x = x;
 	this.y = y;
@@ -172,6 +167,18 @@ var Gem = function(x, y) {
 
 Gem.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+// Creating a Key class
+// TODO: need a key render function in engine.js
+var Key = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.sprite = 'images/key.png';
+}
+
+Key.prototype.render = function() {
+	ctx.drawImage(Resource.get(this.sprite), this.x, this.y);
 }
 
 
@@ -191,7 +198,6 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
     player.handleInput(allowedKeys[e.keyCode]);
-    console.log("Player x is: " + player.y);
 });
 
 
@@ -225,3 +231,25 @@ characters.addEventListener('mouseover', function(e) {
 		spriteNameHolder.innerHTML = spriteName;
 	}
 });
+
+
+
+
+
+// Part of the handleInput method on the Player class
+
+// TODO: Someway to clean this up...Switch Statement?
+	// Keeps the player on the screen, doesn't allow it to move off screen
+
+	// if (player.y > 386) {
+	// 	player.y = 386;
+	// } else if (player.y === -29) {
+	// 	winningFlag = true; // The player reached the top of the screen
+	// 	player.y = -9;
+	// }	else if (player.y < -29) {
+	// 	player.y = -9;
+	// } else if (player.x < 0) {
+	// 	player.x = 0;
+	// } else if (player.x > 404) {
+	// 	player.x = 404;
+	// }
