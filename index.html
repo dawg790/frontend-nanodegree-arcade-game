@@ -4,9 +4,25 @@
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="main">
+    <div id="sprites">
+    	<img src="images/char-cat-girl.png" alt="Cat Woman!">
+    	<img src="images/char-horn-girl.png" alt="Horned One!">
+    	<img src="images/char-pink-girl.png" alt="Pinkalicious!">
+    	<img src="images/char-princess-girl.png" alt="Princess Power!">
+    	<img src="images/char-boy.png" alt="Boy Man!">
+    	<h5 id="spriteName"></h5>
+    </div>
+
+    <p class="score">Total Score: <span id="score"></span></p>
+    <p class="died">Lives Left: <span id="died">3</span></p>
+
+    <h1 id="message-won">YOU WON!</h1>
+    <h1 id="message-lost">GAME OVER</h1>
+
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
+
 </body>
 </html>

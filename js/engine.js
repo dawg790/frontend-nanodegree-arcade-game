@@ -14,11 +14,14 @@
  * a little simpler to work with.
  */
 
+// My Global variables for scoring
+
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
+
     var doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
@@ -153,6 +156,7 @@ var Engine = (function(global) {
         });
 
         player.render();
+        // gem.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -172,7 +176,12 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png',
+        'images/gem-orange.png'
     ]);
     Resources.onReady(init);
 
@@ -181,4 +190,5 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+
 })(this);
