@@ -24,3 +24,5 @@ Instructions for playing the game:
 3: Reach the water to gain points.
 4: User can select Game Characters to play with.
 5: There is some very basic Gem collection and key collection (to increase lives if <= 1)
+
+NOTE: The Rock and Key items have not been added to the game yet. And the Gem and Heart usage is very basic at this stage.
