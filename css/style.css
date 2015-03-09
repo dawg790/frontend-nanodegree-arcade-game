@@ -1,9 +1,10 @@
+/* Main Elements */
 body {
-    text-align: center;
-    width: 505px;
-    margin: 0 auto;
-    font-family: Arial;
-    background: #262626;
+  text-align: center;
+  width: 505px;
+  margin: 0 auto;
+  font-family: Arial;
+  background: #1e1e1e;
 }
 
 #message-won,
@@ -15,17 +16,29 @@ body {
 	font-size: 60px;
 	color: #008040;
 	text-shadow:
-       3px 3px 0 #000,
-     -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-       1px 1px 0 #000;
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
+
 #message-lost {
 	margin-left: 80px;
 }
 
-/*Scoring section styling*/
+.legend {
+	position: absolute;
+	margin-top: 125px;
+	margin-left: -225px;
+	text-align: left;
+}
+
+.legend h4 {
+	color: #888;
+}
+
+/* Scoring elements */
 .score,
 .died {
 	position: absolute;
@@ -36,6 +49,7 @@ body {
 	border-radius: 5px;
 	margin-bottom: 0;
 }
+
 .died {
 	margin-top: 75px;
 }
@@ -43,7 +57,7 @@ body {
 #score,
 #died {
 	font-weight: bold;
-	font-size: 22px;
+	font-size: 24px;
 }
 
 #score {
@@ -51,23 +65,28 @@ body {
 }
 
 #died {
-	color: #F02309;
+	color: #f02309;
 }
 
-/* Image Styling */
-img {
+/* Images */
+#sprites img {
 	width: 50px;
 	height: 100px;
 }
 
-img:hover {
+#sprites img:hover {
 	cursor: pointer;
 }
 
-/* Character section styling */
-#spriteName {
+.legend img {
+	margin-top: -40px;
+	height: 75px;
+}
+
+/* Character section */
+#characterName {
 	font-size: 18px;
-	color: #F09609;
+	color: #f09609;
 	margin: 0 0 -15px 0;
 }
 
