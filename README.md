@@ -5,7 +5,18 @@ Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015
 
 for self-checking their submission.
 
-To load the game:
+
+Instructions for playing the game:
+- Open Index.html in your browser and have fun!
+- Move the player with the up, down, left, right arrow keys
+- Do not get hit by the bugs - you only get 3 lives to begin with. The game is over if you lose all 3 lives.
+- Reach the water to gain points.
+- User can select Game Characters to play with.
+- There is some very basic Gem collection and heart collection (to increase lives if <= 1)
+
+NOTE: The Rock and Key items have not been added to the game yet. And the Gem and Heart usage is very basic at this stage.
+
+Additional notes
 1: The Enemy bugs had to be instantiated from the Enemy class and added to the allEnemies array.
 2: The Player Class had to be created and the player instantiated.
 3: The player instance had to be rendered on the canvas.
@@ -17,12 +28,3 @@ Steps taken to play the game:
 4: If collision, than the gameLost function is run and a life is subtracted from the lives left and score is detracted.
 5: If the player reaches water, than the score is increased
 6: Player is able to choose a new player from the different characters.
-
-Instructions for playing the game:
-1: Move the player with the up, down, left, right keys
-2: Do not get hit by the bugs - you only get 3 lives to begin with. The game is over if you lose all 3 lives.
-3: Reach the water to gain points.
-4: User can select Game Characters to play with.
-5: There is some very basic Gem collection and key collection (to increase lives if <= 1)
-
-NOTE: The Rock and Key items have not been added to the game yet. And the Gem and Heart usage is very basic at this stage.
