@@ -43,7 +43,8 @@ function playerStartPos() {
 }
 
 /* Displays a Game Over message on screen and resets score and player lives count.
- * Called only when the lives count is equal to 0.
+ * Called only when the lives count is equal to 0. Temporarily 'disables' the movePlayer
+ * listener.
  */
 function gameLost() {
 	messageLost.style.display = "block";
@@ -58,9 +59,9 @@ function gameLost() {
 	}, 1250);
 }
 
-/* Displays a You Won message on screen, increments the score, pauses the player at
- * the top of the screen, then player is reset to starting point. Called when the player
- * is rendered.
+/* Displays a You Won message on screen, increments the score, deactivates the movePlayer
+ * listener, then player is reset to starting point and movePlayer listener is added.
+ * Called when the player is rendered.
  */
 function gameWon() {
 	if (winningFlag === true) {
