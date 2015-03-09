@@ -50,9 +50,11 @@ function gameLost() {
 	player.score = 0;
 	player.died = 3;
 	setHTMLscores();
+	document.removeEventListener('keyup', movePlayer, false);
 	setTimeout(function() {
 		playerStartPos();
 		messageLost.style.display = "none";
+		document.addEventListener('keyup', movePlayer, false);
 	}, 1250);
 }
 
@@ -65,9 +67,11 @@ function gameWon() {
 		scoring(5, 0);
 		messageWon.style.display = "block";
 		winningFlag = false;
+		playerStartPos();
+		document.removeEventListener('keyup', movePlayer, false);
 		setTimeout(function() {
-			playerStartPos();
 			messageWon.style.display = "none";
+			document.addEventListener('keyup', movePlayer, false);
 		}, 750);
 	}
 }
@@ -249,7 +253,8 @@ allEnemies[1] = new Enemy(137);
 allEnemies[2] = new Enemy(220);
 allEnemies[3] = new Enemy(137);
 
-document.addEventListener('keyup', function(e) {
+
+function movePlayer(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
@@ -257,7 +262,8 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
     player.handleInput(allowedKeys[e.keyCode]);
-});
+}
+document.addEventListener('keyup', movePlayer, false);
 
 /* Let gamer choose their player
  * player.render function uses characterChoice variable to draw the character
