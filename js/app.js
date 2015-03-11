@@ -1,9 +1,5 @@
 // Declare Global variables below
 
-// Game Board specs
-var gameBoardHeight = 606;
-var gameBoardWidth = 505;
-var spriteWidth = gameBoardWidth / 5;
 // Character choices and names
 var characters = document.getElementById('sprites');
 var characterChoice = "images/char-boy.png";
@@ -38,6 +34,8 @@ function setHTMLscores() {
 // This 'resets' the player starting position on the board
 function playerStartPos() {
 	// TODO: use a function to generate random y positions
+	var gameBoardWidth = 505;
+	var spriteWidth = gameBoardWidth / 5;
 	player.x = (gameBoardWidth / 2) - (spriteWidth / 2);
 	player.y = 386;
 }
@@ -93,13 +91,13 @@ var Enemy = function(y) {
     this.x = Math.random() * (300 - 50) + 50;
     this.y = y;
     this.sprite = 'images/enemy-bug.png';
-}
+};
 
 // This sets the enemy vehicle speed randomly.
 Enemy.prototype.speed = function() {
   var speed = Math.random() * (600 - 50) + 50;
   return speed.toFixed();
-}
+};
 
 // Uses the randomly generated speed to move the enemies across the game board
 Enemy.prototype.update = function(dt) {
@@ -115,11 +113,11 @@ Enemy.prototype.update = function(dt) {
 		if (player.died === 0) {
 			gameLost();
 		}
-}
+};
 
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Player Class
 var Player = function(x, y) {
@@ -128,11 +126,11 @@ var Player = function(x, y) {
 	this.sprite = characterChoice;
 	this.score = 0;
 	this.died = 3;
-}
+};
 
 Player.prototype.update = function() {
 	// noop
-}
+};
 
 Player.prototype.render = function() {
 	/* Uses the characterChoice variable (initially defaulted to char-boy.png) to draw the
@@ -141,7 +139,7 @@ Player.prototype.render = function() {
 	 */
 	ctx.drawImage(Resources.get(characterChoice), this.x, this.y);
 	gameWon();
-}
+};
 
 Player.prototype.handleInput = function(keyed) {
 	/* The moveIt object stores the 'actions' (or key presses) instead of using an
@@ -177,24 +175,24 @@ Player.prototype.handleInput = function(keyed) {
 				player.x = 404;
 			}
 		}
-	}
+	};
 
 	// Check if the moveIt object has a matching 'keyed' property. If so, call it.
 	if (moveIt.hasOwnProperty(keyed)) {
 		moveIt[keyed]();
 	}
-}
+};
 
 // Gem Class
 var Gem = function(x, y) {
 	this.x = x;
 	this.y = y;
 	this.sprite = 'images/gem-blue.png';
-}
+};
 
 Gem.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Gem.prototype.update = function() {
 	/* TODO: timeout below could be used to display a Gem for only a set period of time
@@ -211,7 +209,7 @@ Gem.prototype.update = function() {
 			this.x = -100;
 		}
 	}
-}
+};
 
 var gem = new Gem(303, 137);
 
@@ -220,14 +218,14 @@ var Heart = function(x, y) {
 	this.x = x;
 	this.y = y;
 	this.sprite = 'images/Heart.png';
-}
+};
 
 Heart.prototype.render = function() {
 	if (player.died <= 1) {
 		this.x = 101;
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 	}
-}
+};
 
 Heart.prototype.update = function() {
 	/* Run basic checks to see if player and heart are in same coordinates. If so, move the
@@ -239,7 +237,7 @@ Heart.prototype.update = function() {
 			this.x = -100;
 		}
 	}
-}
+};
 
 // Instantiate the Key
 var heart = new Heart(101, 54);
